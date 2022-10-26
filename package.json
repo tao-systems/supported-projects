@@ -1,5 +1,3 @@
 {
-  "dependencies": {
-    "@umee_crosschain/shared-types": "^1.0.1"
-  }
+  "name": "Supported assets and projects"
 }
