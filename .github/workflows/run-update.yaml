@@ -12,7 +12,7 @@ jobs:
     name: Update Firestore
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@main
         with:
           fetch-depth: 0
       - name: Checkout latest release tag
@@ -20,7 +20,6 @@ jobs:
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
           git checkout $LATEST_TAG
       - name: Update latest version in Firestore
-        uses: './asset-updater/index.js'
         with:
           credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
         run: |
