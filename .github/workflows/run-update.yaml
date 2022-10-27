@@ -11,10 +11,6 @@ jobs:
       id-token: 'write'
     name: Update Firestore
     steps:
-      - name: Checkout
-        uses: actions/checkout@main
-        with:
-          fetch-depth: 0
       - name: Checkout latest release tag
         run: |
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
