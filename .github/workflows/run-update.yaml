@@ -22,7 +22,6 @@ jobs:
       - name: Update latest version in Firestore
         with:
           credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
-      - name: Run Firestore update
         run: |
            node ./asset-updater/index.js
         shell: bash
