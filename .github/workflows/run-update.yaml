@@ -1,0 +1,19 @@
+on:
+  push:
+   tags: 
+    - "v*.*.*"
+permissions:
+    contents: 'write'
+    id-token: 'write'
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    name: Update Firestore
+    needs: [deploy]
+    steps: 
+      - name: Update latest version in Firestore
+        uses: w9jds/firebase-trigger@master
+        with:
+          credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
+          databaseUrl: https://umee-wallet.firebaseio.com
+          path: supported-assets
