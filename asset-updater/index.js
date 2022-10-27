@@ -17,6 +17,7 @@ async function extractAssets(TARGET_DIR) {
     console.log(`Did not find any files in ${TARGET_DIR} - exiting.`)
     return
   } else {
+    process.stdout.write(files)
     const filesContent = await Promise.all(files.map((file) => {
       return util.promisify(readFile)(path.join(TARGET_DIR, file, 'index.json'), 'utf8');
     }));
@@ -31,6 +32,7 @@ async function extractAssets(TARGET_DIR) {
 }
 async function storeAssets(assets) {
   try {
+    process.stdout.write('SAVING ASSETS', assets)
     firestore.runTransaction(async t => {
       const snapshot = await firestore.collection('assets').get()
       const updateSymbolList = assets.map(asset => asset.symbol)
@@ -66,6 +68,7 @@ async function storeAssets(assets) {
 
 }
 async function storeProjects(projects) {
+  process.stdout.write('SAVING PROJECTS', projects)
   try {
     firestore.runTransaction(async t => {
       const snapshot = await firestore.collection('projects').get()
