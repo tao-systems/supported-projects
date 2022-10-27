@@ -25,5 +25,5 @@ jobs:
         env:
           credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
         run: |
-            echo pwd 
-            cd asset-updater && echo pwd && yarn && node index.js
+            pwd 
+            cd asset-updater && pwd && yarn && node index.js
