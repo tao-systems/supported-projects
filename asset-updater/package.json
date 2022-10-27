@@ -1,0 +1,11 @@
+{
+  "name": "asset-updater",
+  "version": "1.0.0",
+  "description": "util used to update firestore supported assets collection",
+  "main": "index.js",
+  "author": "@UmeeAndrey @dreamcodez",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/firestore": "^6.4.1"
+  }
+}
