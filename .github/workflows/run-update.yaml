@@ -26,4 +26,3 @@ jobs:
            cd ./asset-updater
            yarn
            node ./asset-updater/index.js
-        shell: bash
