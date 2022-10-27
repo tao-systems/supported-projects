@@ -20,6 +20,7 @@ jobs:
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
           git checkout $LATEST_TAG
       - name: Update latest version in Firestore
+        uses: './asset-updater/index.js'
         with:
           credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
         run: |
