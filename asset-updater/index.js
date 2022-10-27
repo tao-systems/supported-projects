@@ -1,6 +1,6 @@
 const util = require('util')
 const path = require('path')
-const { readdir, readFile } = require('fs')
+const { readdir, readFile, existsSync } = require('fs')
 const { Firestore } = require('@google-cloud/firestore');
 const ASSETS_DIR = '../assets'
 const PROJECTS_DIR = '../projects'
