@@ -17,12 +17,12 @@ jobs:
           fetch-depth: 0
           path: main
       - name: Checkout latest release tag
+        working-directory: ./
         run: |
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
           git checkout $LATEST_TAG
       - name: Update latest version in Firestore
+        working-directory: ./asset-updater
         env:
           credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
-        run: |
-            cd ./asset-updater &&
-            yarn && node index.js
+        run: yarn && node index.js
