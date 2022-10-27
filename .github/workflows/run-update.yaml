@@ -4,16 +4,25 @@ on:
     - "v*.*.*"
 
 jobs:
-  update:
+  update-firestore:
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
       id-token: 'write'
     name: Update Firestore
-    steps: 
-    - name: Update latest version in Firestore
-      uses: w9jds/firebase-trigger@master
-      with:
-        credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
-        databaseUrl: https://umee-wallet.firebaseio.com
-        path: supported-assets
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 0
+      - name: Checkout latest release tag
+        run: |
+          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+          git checkout $LATEST_TAG
+      - name: Update latest version in Firestore
+        with:
+          credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
+      - name: Run Firestore update
+        run: |
+           node ./asset-updater/index.js
+        shell: bash
