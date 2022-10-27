@@ -9,16 +9,21 @@ const firestore = new Firestore({ projectId: 'umee-wallet' });
 
 async function extractAssets(TARGET_DIR) {
   const files = await util.promisify(readdir)(TARGET_DIR);
+  if (files.length < 1) {
+    console.log(`Did not find any files in ${TARGET_DIR} - exiting.`)
+    return
+  } else {
+    const filesContent = await Promise.all(files.map((file) => {
+      return util.promisify(readFile)(path.join(TARGET_DIR, file, 'index.json'), 'utf8');
+    }));
 
-  const filesContent = await Promise.all(files.map((file) => {
-    return util.promisify(readFile)(path.join(TARGET_DIR, file, 'index.json'), 'utf8');
-  }));
+    const fileMap = filesContent.map(fileValue => {
+      return JSON.parse(fileValue)
+    })
 
-  const fileMap = filesContent.map(fileValue => {
-    return JSON.parse(fileValue)
-  })
+    return fileMap
+  }
 
-  return fileMap
 }
 async function storeAssets(assets) {
   try {
