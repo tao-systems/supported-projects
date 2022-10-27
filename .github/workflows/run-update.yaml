@@ -19,13 +19,8 @@ jobs:
         run: |
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
           git checkout $LATEST_TAG
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
-      - name: Update latest version in Firestore 
+      - name: Update latest version in Firestore
+        working-directory: ./asset-updater/ 
         with:
           credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
-        run: |
-             yarn && node index.js
-        working-directory: ./asset-updater/
+        run: yarn && node index.js
