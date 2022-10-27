@@ -17,7 +17,6 @@ jobs:
           fetch-depth: 0
       - name: Checkout latest release tag
         run: |
-          cd /home/runner/work/supported-projects/supported-projects/
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
           git checkout $LATEST_TAG
       - name: Update latest version in Firestore
@@ -25,6 +24,5 @@ jobs:
           credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
       - name: Run Firestore update
         run: |
-           cd /home/runner/work/supported-projects/supported-projects/
            node ./asset-updater/index.js
         shell: bash
