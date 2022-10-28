@@ -21,8 +21,4 @@ jobs:
         working-directory: ./
         env:
           credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
-        run: |
-          #  sudo apt update
-          #  sudo apt install -y cl-base64
-           
-           cd ./asset-updater &&  echo ${{ secrets.FIRESTORE_CREDENTIALS }} >> keyFile.json && cat keyFile.json && yarn && node index.js
+        run: cd ./asset-updater &&  echo ${{ secrets.FIRESTORE_CREDENTIALS }} >> keyFile.json && cat keyFile.json && yarn && node index.js
