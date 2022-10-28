@@ -6,6 +6,7 @@ const ASSETS_DIR = '../assets'
 const PROJECTS_DIR = '../projects'
 
 const firestore = new Firestore({ projectId: 'umee-wallet',  keyFilename: './keyFile.json'});
+console.log(process.env)
 
 async function extractDirectoryContents(TARGET_DIR) {
   console.log('EXTRACTING FROM', TARGET_DIR)
