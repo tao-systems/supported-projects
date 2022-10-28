@@ -5,7 +5,7 @@ const { Firestore } = require('@google-cloud/firestore');
 const ASSETS_DIR = '../assets'
 const PROJECTS_DIR = '../projects'
 
-const firestore = new Firestore({ projectId: 'umee-wallet' });
+const firestore = new Firestore({ projectId: 'umee-wallet', credentials: process.env.credentials });
 
 async function extractAssets(TARGET_DIR) {
   const dirExists = await util.promisify(existsSync)(TARGET_DIR)
