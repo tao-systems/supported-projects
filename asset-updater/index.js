@@ -6,7 +6,7 @@ const ASSETS_DIR = '../assets'
 const PROJECTS_DIR = '../projects'
 
 const firestore = new Firestore({ projectId: 'umee-wallet', keyFilename: './keyFile.json'});
-console.log(`ENV`,process.env)
+
 async function extractAssets(TARGET_DIR) {
   console.log('EXTRACTING ASSETS')
   const dirExists = await util.promisify(existsSync)(TARGET_DIR)
@@ -107,4 +107,4 @@ async function storeProjects(projects) {
 
 console.log('STARGING ASSET AND PROJECT UPDATER')
 extractAssets(ASSETS_DIR).then(assets => storeAssets(assets));
-extractAssets(PROJECTS_DIR).then(projects => storeProjects(projects));
+storeProjects(PROJECTS_DIR).then(projects => storeProjects(projects));
