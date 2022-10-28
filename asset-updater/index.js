@@ -75,46 +75,46 @@ async function storeAssets(assets) {
   }
 
 }
-async function storeProjects(projects) {
-  if(!projects || projects.length < 1){
-    return
-  }
- console.log('SAVING PROJECTS', projects)
-  try {
-    firestore.runTransaction(async t => {
-      const snapshot = await firestore.collection('projects').get()
-      const updateSymbolList = projects.map(project => project.name)
+// async function storeProjects(projects) {
+//   if(!projects || projects.length < 1){
+//     return
+//   }
+//  console.log('SAVING PROJECTS', projects)
+//   try {
+//     firestore.runTransaction(async t => {
+//       const snapshot = await firestore.collection('projects').get()
+//       const updateSymbolList = projects.map(project => project.name)
 
-      const docData = snapshot.docs.map(doc => doc.data());
+//       const docData = snapshot.docs.map(doc => doc.data());
 
-      const deleteAssetList = docData.reduce((acc, doc) => {
-        if (!updateSymbolList.includes(doc.name)) {
-          acc.push(doc.name)
-        }
-        return acc
-      }, [])
+//       const deleteAssetList = docData.reduce((acc, doc) => {
+//         if (!updateSymbolList.includes(doc.name)) {
+//           acc.push(doc.name)
+//         }
+//         return acc
+//       }, [])
 
-      await Promise.all(deleteAssetList.map(delAssetSymbol => {
-        firestore.collection('projects')
-          .doc(delAssetSymbol)
-          .delete()
-      }))
+//       await Promise.all(deleteAssetList.map(delAssetSymbol => {
+//         firestore.collection('projects')
+//           .doc(delAssetSymbol)
+//           .delete()
+//       }))
 
-      await Promise.all(assets.map(async asset => {
-        const key = asset.name;
-        firestore.collection('projects')
-          .doc(key)
-          .set(asset)
-      }))
+//       await Promise.all(assets.map(async asset => {
+//         const key = asset.name;
+//         firestore.collection('projects')
+//           .doc(key)
+//           .set(asset)
+//       }))
 
-      return t
-    })
+//       return t
+//     })
 
-  } catch (e) {
-    console.log(`Transaction failure`, e)
-  }
-}
+//   } catch (e) {
+//     console.log(`Transaction failure`, e)
+//   }
+// }
 
 console.log('STARGING ASSET AND PROJECT UPDATER')
 extractDirectoryContents(ASSETS_DIR).then(assets => storeAssets(assets));
-extractDirectoryContents(PROJECTS_DIR).then(projects => storeProjects(projects));
+// extractDirectoryContents(PROJECTS_DIR).then(projects => storeProjects(projects));
