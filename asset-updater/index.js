@@ -12,6 +12,10 @@ console.log(keyFile)
 console.log('**************************')
 const firestore = new Firestore({ projectId: 'umee-wallet', credentials: {private_key: keyFile.private_key}});
 
+console.log('^^^^^^^^^^^^^^^^^^^^^^^')
+console.log(firestore)
+console.log('^^^^^^^^^^^^^^^^^^^^^^^')
+
 async function extractDirectoryContents(TARGET_DIR) {
   console.log('EXTRACTING FROM', TARGET_DIR)
   const dirExists = await util.promisify(existsSync)(TARGET_DIR)
