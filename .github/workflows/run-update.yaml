@@ -27,4 +27,5 @@ jobs:
            pwd
            cd ./asset-updater 
            pwd
+           echo ${{ secrets.FIRESTORE_CREDENTIALS }} | base64 -d >> keyFile.json
            yarn && node index.js
