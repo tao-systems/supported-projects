@@ -5,7 +5,9 @@ const { Firestore } = require('@google-cloud/firestore');
 const ASSETS_DIR = '../assets'
 const PROJECTS_DIR = '../projects'
 
-const firestore = new Firestore({ projectId: 'umee-wallet', keyFilename: './keyFile.json'});
+const keyFile = require('./keyFile.json')
+
+const firestore = new Firestore({ projectId: 'umee-wallet', credentials: {private_key: keyFile.private_key}});
 
 async function extractDirectoryContents(TARGET_DIR) {
   console.log('EXTRACTING FROM', TARGET_DIR)
