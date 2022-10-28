@@ -21,7 +21,7 @@ jobs:
         name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v0'
         with:
-           credentials_json: secrets.SERVICE_ACCOUNT_JSON
+           credentials_json: ${{ secrets.SERVICE_ACCOUNT_JSON }}
       - name: Update latest version in Firestore
         working-directory: ./
         env:
