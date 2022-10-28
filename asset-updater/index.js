@@ -36,6 +36,9 @@ async function extractDirectoryContents(TARGET_DIR) {
 
 }
 async function storeAssets(assets) {
+  if(!asets || assets.length < 1){
+    return
+  }
   try {
    console.log('SAVING ASSETS', assets)
     firestore.runTransaction(async t => {
@@ -73,6 +76,9 @@ async function storeAssets(assets) {
 
 }
 async function storeProjects(projects) {
+  if(!projects || projects.length < 1){
+    return
+  }
  console.log('SAVING PROJECTS', projects)
   try {
     firestore.runTransaction(async t => {
