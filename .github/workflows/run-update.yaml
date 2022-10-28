@@ -16,7 +16,7 @@ jobs:
         run: |
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
           echo checked out to latest tag $LATEST_TAG
-          git checkout $LATEST_TAG
+          git checkout main
       - name: Update latest version in Firestore
         working-directory: ./
         env:
