@@ -24,7 +24,4 @@ jobs:
            credentials_json: ${{ secrets.SERVICE_ACCOUNT_JSON }}
       - name: Update latest version in Firestore
         working-directory: ./
-        env:
-          CLIENT_EMAIL: ${{ secrets.CLIENT_EMAIL }}
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         run: cd ./asset-updater && yarn && node index.js
