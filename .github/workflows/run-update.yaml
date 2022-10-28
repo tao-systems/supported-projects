@@ -17,9 +17,14 @@ jobs:
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
           echo checked out to latest tag $LATEST_TAG
           git checkout main
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+           credentials_json: secrets.SERVICE_ACCOUNT_JSON
       - name: Update latest version in Firestore
         working-directory: ./
         env:
           CLIENT_EMAIL: ${{ secrets.CLIENT_EMAIL }}
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        run: cd ./asset-updater && echo ${{ secrets.SERVICE_ACCOUNT_JSON }} >> keyFile.json  && yarn && node index.js
+        run: cd ./asset-updater && yarn && node index.js
