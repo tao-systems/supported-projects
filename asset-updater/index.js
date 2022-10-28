@@ -37,7 +37,7 @@ async function extractDirectoryContents(TARGET_DIR) {
 
 }
 async function storeAssets(assets) {
-  if(!assets || assets.length < 1){
+  if(!assets || !assets.length > 0){
     return
   }
   try {
