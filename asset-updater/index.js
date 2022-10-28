@@ -6,7 +6,7 @@ const ASSETS_DIR = '../assets'
 const PROJECTS_DIR = '../projects'
 
 const firestore = new Firestore({ projectId: 'umee-wallet', credentials: process.env.credentials });
-
+console.log(`ENV`,process.env)
 async function extractAssets(TARGET_DIR) {
   const dirExists = await util.promisify(existsSync)(TARGET_DIR)
   if(!dirExists){
@@ -17,7 +17,7 @@ async function extractAssets(TARGET_DIR) {
     console.log(`Did not find any files in ${TARGET_DIR} - exiting.`)
     return
   } else {
-    process.stdout.write(files)
+   console.log(files)
     const filesContent = await Promise.all(files.map((file) => {
       return util.promisify(readFile)(path.join(TARGET_DIR, file, 'index.json'), 'utf8');
     }));
@@ -32,7 +32,7 @@ async function extractAssets(TARGET_DIR) {
 }
 async function storeAssets(assets) {
   try {
-    process.stdout.write('SAVING ASSETS', assets)
+   console.log('SAVING ASSETS', assets)
     firestore.runTransaction(async t => {
       const snapshot = await firestore.collection('assets').get()
       const updateSymbolList = assets.map(asset => asset.symbol)
@@ -68,7 +68,7 @@ async function storeAssets(assets) {
 
 }
 async function storeProjects(projects) {
-  process.stdout.write('SAVING PROJECTS', projects)
+ console.log('SAVING PROJECTS', projects)
   try {
     firestore.runTransaction(async t => {
       const snapshot = await firestore.collection('projects').get()
@@ -104,5 +104,6 @@ async function storeProjects(projects) {
   }
 }
 
+console.log('STARGING ASSET AND PROJECT UPDATER')
 extractAssets(ASSETS_DIR).then(assets => storeAssets(assets));
 extractAssets(PROJECTS_DIR).then(projects => storeProjects(projects));
