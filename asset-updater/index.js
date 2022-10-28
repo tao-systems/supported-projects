@@ -1,20 +1,23 @@
 const util = require('util')
 const path = require('path')
-const { readdir, readFile, existsSync } = require('fs')
+const { readdir, readFile, exists  } = require('fs')
 const { Firestore } = require('@google-cloud/firestore');
 const ASSETS_DIR = '../assets'
 const PROJECTS_DIR = '../projects'
 
-const keyFile = require('./keyFile.json')
-const firestore = new Firestore({ projectId: 'umee-wallet', credentials: JSON.parse(keyFile)});
+const firestore = new Firestore({ projectId: 'umee-wallet',  keyFilename: './keyFile.json'});
 
 async function extractDirectoryContents(TARGET_DIR) {
   console.log('EXTRACTING FROM', TARGET_DIR)
-  const dirExists = await util.promisify(existsSync)(TARGET_DIR)
+  const dirExists = await util.promisify(exists)(TARGET_DIR)
+
   if(!dirExists){
+    console.log(`${TARGET_DIR} does not exists in repository ... aborting`)
     return
   }
+
   const files = await util.promisify(readdir)(TARGET_DIR);
+
   if (files.length < 1) {
     console.log(`Did not find any files in ${TARGET_DIR} - exiting.`)
     return
