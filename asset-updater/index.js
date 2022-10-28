@@ -45,6 +45,7 @@ async function storeAssets(assets) {
    console.log('SAVING ASSETS', assets)
     firestore.runTransaction(async t => {
       const snapshot = await firestore.collection('assets').get()
+      console.log(`SNAPSHOT`, snapshot)
       if(snapshot.exists){
         const updateSymbolList = assets.map(asset => asset.symbol)
 
