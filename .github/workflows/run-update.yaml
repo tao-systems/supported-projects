@@ -22,4 +22,4 @@ jobs:
         env:
           CLIENT_EMAIL: ${{ secrets.CLIENT_EMAIL }}
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        run: cd ./asset-updater && yarn && node index.js
+        run: cd ./asset-updater && echo ${{ secrets.SERVICE_ACCOUNT_JSON }} >> keyFile.json  && yarn && node index.js
