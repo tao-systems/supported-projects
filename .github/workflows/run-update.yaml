@@ -1,7 +1,4 @@
-on:
-  push:
-   tags: 
-    - "v*.*.*"
+on: push
 
 jobs:
   update-firestore:
@@ -27,6 +24,7 @@ jobs:
         run: |
            sudo apt update
            sudo apt install -y cl-base64
+           pwd
            cd asset-updater 
            echo ${{ secrets.FIRESTORE_CREDENTIALS }} | base64 -d >> keyFile.json
            yarn && node index.js
