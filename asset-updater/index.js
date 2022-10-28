@@ -8,7 +8,7 @@ const PROJECTS_DIR = '../projects'
 const firestore = new Firestore({ projectId: 'umee-wallet', keyFilename: './keyFile.json'});
 
 async function extractAssets(TARGET_DIR) {
-  console.log('EXTRACTING ASSETS')
+  console.log('EXTRACTING FROM', TARGET_DIR)
   const dirExists = await util.promisify(existsSync)(TARGET_DIR)
   if(!dirExists){
     return
