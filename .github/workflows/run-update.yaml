@@ -26,4 +26,4 @@ jobs:
           credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
         run: |
             pwd 
-            cd asset-updater && echo '${{ secrets.FIRESTORE_CREDENTIALS }}' >> keyFile.json && yarn && node --version && node index.js
+            cd asset-updater && echo ${{ secrets.FIRESTORE_CREDENTIALS }} | base64 >> keyFile.json && yarn && node --version && node index.js
