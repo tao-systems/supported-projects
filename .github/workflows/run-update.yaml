@@ -25,4 +25,4 @@ jobs:
         env:
           credentials: ${{ secrets.FIRESTORE_CREDENTIALS }}
         run: |
-            apt update && apt install -y base64 && cd asset-updater && echo ${{ secrets.FIRESTORE_CREDENTIALS }} | base64 >> keyFile.json && yarn && node --version && node index.js
+            apt update && apt install -y base64 && cd asset-updater && echo ${{ secrets.FIRESTORE_CREDENTIALS }} | base64 -d >> keyFile.json && yarn && node --version && node index.js
