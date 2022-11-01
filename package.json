@@ -1,7 +1,7 @@
 {
   "name": "supported-assets",
   "scripts": {
-    "test": "jest ./assets.spec.ts"
+    "test": "jest ./test/assets.spec.ts"
   },
   "devDependencies": {
     "@jest/types": "^29.2.1",
