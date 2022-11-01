@@ -17,6 +17,7 @@ jobs:
           echo checked out to latest tag $LATEST_TAG
           git checkout main
   validate-json:
+    needs: ['checkout-latest']
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
@@ -25,6 +26,7 @@ jobs:
       - name: Validate JSON schema
         run: yarn && yarn test
   authenticate:
+    needs: ['validate-json']
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
@@ -35,6 +37,7 @@ jobs:
          with:
            credentials_json: ${{ secrets.SERVICE_ACCOUNT_JSON }}
   update-firestore:
+    needs: ['authenticate']
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
