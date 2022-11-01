@@ -1,4 +1,7 @@
-on: push
+on:
+  push:
+   tags: 
+    - "v*.*.*"
 
 jobs:
   deploy:
@@ -13,9 +16,8 @@ jobs:
           fetch-depth: 0
       - name: Checkout latest release tag
         run: |
-          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-          echo checked out to latest tag $LATEST_TAG
-          git checkout main
+            LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+            git checkout $LATEST_TAG
       - name: Validate JSON schema
         run:  yarn && yarn test
       - name: authenticate
