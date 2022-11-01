@@ -1,8 +1,43 @@
 import { readdirSync, readFileSync } from 'fs'
 import path from 'path'
-import { Asset} from '@umee_crosschain/shared-types'
+import { Asset, TokenType } from '@umee_crosschain/shared-types'
+import Ajv from 'ajv'
 
+
+const ajv = new Ajv()
 const ASSET_DIR = './assets'
+
+const ASSET_SCHEMA = {
+  type: 'object',
+  properties: {
+    type: { type: 'string' },
+    address: { type: "string" },
+    name: { type: "string" },
+    symbol: { type: "string" },
+    decimals: { type: "integer" },
+    website: { type: "string" },
+    shortDescription: { type: 'string'},
+    explorer: { type: "string" },
+    description: { type: "string" },
+    link: { type: "string" },
+    coinGeckoId: { type: "string" },
+    logo: { type: "string" }
+  },
+  required: [
+    'type',
+    'address',
+    'name',
+    'symbol',
+    'decimals',
+    'shortDescription',
+    'description',
+    'link',
+    'coinGeckoId',
+    'logo'],
+  additionalProperties: false
+}
+
+const validationModel = ajv.compile(ASSET_SCHEMA)
 
 function isValidAsset(obj: any): obj is Asset {
   if ((obj as Asset).type) {
@@ -29,14 +64,17 @@ describe(`Validate supported assets`, () => {
 
       const assetInfo: Asset = { ...asset[key] }
 
-      const test = isValidAsset(assetInfo)
+      const testType = isValidAsset(assetInfo)
 
-      if (!test) {
+      const propertyTest = validationModel(assetInfo)
+
+      if (!testType) {
         throw new Error(`Asset ${key} does not adhere to the @umee_crosschain/shared-types.Asset schema`)
       }
-
-      expect(test).toBeTruthy()
-
+      if (!propertyTest) console.log(validationModel.errors)
+      expect(testType).toBeTruthy()
+      console.log(propertyTest)
+      expect(propertyTest).toBeTruthy()
 
     });
   })
