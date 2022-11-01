@@ -24,7 +24,7 @@ jobs:
       id-token: 'write'
     steps:
       - name: Validate JSON schema
-        run: cat package.json && yarn && yarn test
+        run:  yarn && cd /home/runner/work/supported-projects/supported-projects &&  yarn test
   authenticate:
     needs: ['validate-json']
     runs-on: ubuntu-latest
