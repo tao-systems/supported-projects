@@ -24,7 +24,7 @@ jobs:
       id-token: 'write'
     steps:
       - name: Validate JSON schema
-        run: pwd && yarn && yarn test
+        run: ls -la && yarn && yarn test
   authenticate:
     needs: ['validate-json']
     runs-on: ubuntu-latest
