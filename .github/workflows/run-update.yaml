@@ -1,12 +1,11 @@
 on: push
 
 jobs:
-  update-firestore:
+  checkout-latest:
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
       id-token: 'write'
-    name: Update Firestore
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -17,6 +16,21 @@ jobs:
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
           echo checked out to latest tag $LATEST_TAG
           git checkout main
+  validate-json:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'write'
+      id-token: 'write'
+    steps:
+      - name: Validate JSON schema
+        run: yarn test
+  update-firestore:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'write'
+      id-token: 'write'
+    steps:
+      - name: Update Firestore
       - id: 'auth'
         name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v0'
