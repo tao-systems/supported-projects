@@ -4,13 +4,14 @@ Supported Projects for Tao-Systems Projects API
 
 To add an Asset to Tabu Wallet follow the steps below:
 
-1. First create a new branch with this format `Asset/*assetname*`.
+1. First create a new branch with this format `Asset/Symbol`.
 2. Create a folder in the assets director with the name of the asset.
 3. Create a index.ts file in that folder with the following format:
 
 ```json
 {
   "type": "ERC20",
+  "chainId": "1",
   "address": "0xc0a4df35568f116c370e6a6a6022ceb908eeddac",
   "name": "Umee",
   "symbol": "UMEE",
@@ -25,13 +26,22 @@ To add an Asset to Tabu Wallet follow the steps below:
 }
 ```
 
-Type Options:
+## Type Options
 
-- ERC20
-- COSMOS
-- BEP20?
-- ?
+- Native (ETH, BTC, SOL)
+- ERC20 (Tokens on EVM, WETH, BabyDoge, Chainlink)
+- COSMOS (Cosmos Native Assets, Atom, Osmo, Juno)
 
-4. Fially create a Pull Request to merge your asset branch into the main branch.
+## ChainId
+
+For all EVM Chains this should be a number if an evm based chain. You can find a list of EVM chains and their ids [Here](https://chainlist.org/)
+
+For Cosmos based chains the chain Id should be something like "umee-1", "juno-1" etc.
+
+4. Create a commit that follows this naming pattern `Asset: Symbol`
+
+_This repo uses conventional commits, you must follow the syntax or it will not let you make a commit._
+
+5. Finally create a Pull Request to merge your asset branch into the main branch.
 
 Done :grinning:
