@@ -9,7 +9,7 @@
   "explorer": "https://www.mintscan.io/cosmos",
   "shortDescription": "Internet of Blockchains",
   "description": "The Cosmos Hub is an Internet of Blockchains, a network of blockchains able to communicate with each other in a decentralized way.",
-  "app": "https://cosmos.network/",
+  "link": "https://cosmos.network/",
   "coinGeckoId": "cosmos",
   "logo": "https://assets.coingecko.com/coins/images/1481/small/cosmos_hub.png?1555657960"
 }
