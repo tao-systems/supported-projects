@@ -1,6 +1,6 @@
 import { readdirSync, readFileSync } from 'fs'
 import path from 'path'
-import { Asset, TokenType } from '@umee_crosschain/shared-types'
+import { Asset } from '@tabu/shared-types'
 import Ajv from 'ajv'
 
 
