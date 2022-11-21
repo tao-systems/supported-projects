@@ -1,8 +1,6 @@
-on:
-  push:
-   branches:
-     - "*"
-
+name: validate-schemna
+on: [pull_request]
+  
 jobs:
   run-validation:
     runs-on: ubuntu-latest
