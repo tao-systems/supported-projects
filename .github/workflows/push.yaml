@@ -17,4 +17,5 @@ jobs:
               echo "run test"
           done
       - name: Validate JSON schema
+        working-directory: ./
         run:  pwd && yarn && yarn test
