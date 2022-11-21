@@ -15,6 +15,7 @@ To add an Asset to Tabu Wallet follow the steps below:
   "address": "0xc0a4df35568f116c370e6a6a6022ceb908eeddac",
   "name": "Umee",
   "symbol": "UMEE",
+  "baseDenom":"uumee",
   "decimals": 6,
   "website": "https://umee.cc/",
   "explorer": "https://www.mintscan.io/umee",

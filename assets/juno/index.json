@@ -5,6 +5,7 @@
   "name": "Juno",
   "symbol": "JUNO",
   "decimals": 6,
+  "baseDenom": "ujuno",
   "website": "https://www.junonetwork.io/",
   "explorer": "https://www.mintscan.io/juno",
   "shortDescription": "50+ Dapps, Contracts, Tools, NFT Collections and 2000+ DAOs built on Juno",

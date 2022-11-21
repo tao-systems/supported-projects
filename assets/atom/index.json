@@ -4,6 +4,7 @@
   "address": "",
   "name": "Cosmos",
   "symbol": "ATOM",
+  "baseDenom": "uatom",
   "decimals": 6,
   "website": "https://cosmos.network/",
   "explorer": "https://www.mintscan.io/cosmos",

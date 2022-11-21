@@ -22,7 +22,8 @@ const ASSET_SCHEMA = {
     link: { type: "string" },
     coinGeckoId: { type: "string" },
     logo: { type: "string" },
-    chainId: {type: "string"}
+    chainId: {type: "string"},
+    baseDenom: {type: "string"}
   },
   required: [
     'type',
@@ -35,6 +36,7 @@ const ASSET_SCHEMA = {
     'link',
     'coinGeckoId',
     'chainId',
+    "baseDenom",
     'logo'],
   additionalProperties: false
 }

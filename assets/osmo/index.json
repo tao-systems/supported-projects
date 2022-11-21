@@ -4,6 +4,7 @@
     "address": "",
     "name": "Osmosis",
     "symbol": "Osmo",
+    "baseDenom": "uosmo",
     "decimals": 6,
     "website": "https://osmosis.zone/",
     "explorer": "https://www.mintscan.io/osmosis",
