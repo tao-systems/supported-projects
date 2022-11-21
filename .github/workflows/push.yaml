@@ -12,5 +12,4 @@ jobs:
         with:
           fetch-depth: 0
       - name: Validate JSON schema
-        working-directory: ./
-        run:  yarn && ls -la && yarn test
+        run:  yarn && yarn test
