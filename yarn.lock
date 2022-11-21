@@ -514,6 +514,11 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@tabu/shared-types@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@tabu/shared-types/-/shared-types-1.0.0.tgz#8df26366773aab34bc2ef8a6fe92a8a40fa39aaf"
+  integrity sha512-jvuKtrZaUQ44JxjvmP0yw4CAD4zwPYtVbsdPcuJQqwv4glh5tiaz6cbPPwITMqw5zEaYJ+vHfrJMTVjLDgs/Nw==
+
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@tsconfig/node10/-/node10-1.0.9.tgz#df4907fc07a886922637b15e02d4cebc4c0021b2"
@@ -615,10 +620,6 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.13.tgz#34cced675ca1b1d51fcf4d34c3c6f0fa142a5c76"
   dependencies:
     "@types/yargs-parser" "*"
-
-"@umee_crosschain/shared-types@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@umee_crosschain/shared-types/-/shared-types-1.0.4.tgz#ad9a51445c059279aadf6a68bf2af990f64c3d23"
 
 acorn-walk@^8.1.1:
   version "8.2.0"
