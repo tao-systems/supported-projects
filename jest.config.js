@@ -6,6 +6,6 @@ module.exports = {
   moduleDirectories: ["node_modules"],
   transform: {},
   transformIgnorePatterns: [
-    "node_modules/@umee_crosschain/shared-types"
+    "node_modules/@tabu/shared-types"
   ],
 };

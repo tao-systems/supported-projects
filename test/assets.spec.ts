@@ -58,7 +58,7 @@ describe(`Validate supported assets`, () => {
     }))
   })
 
-  it(`all assets should conform to the Asset type @umee_crosschain/shared-types`, () => {
+  it(`all assets should conform to the Asset type @tabu/shared-types`, () => {
 
     assetList.forEach(asset => {
 
@@ -71,7 +71,7 @@ describe(`Validate supported assets`, () => {
       const propertyTest = validationModel(assetInfo)
 
       if (!testType) {
-        throw new Error(`Asset ${key} does not adhere to the @umee_crosschain/shared-types.Asset schema`)
+        throw new Error(`Asset ${key} does not adhere to the @tabu/shared-types.Asset schema`)
       }
       if (!propertyTest) console.log(validationModel.errors)
       expect(testType).toBeTruthy()
