@@ -9,5 +9,4 @@ jobs:
       id-token: 'write'
     steps:
       - name: Validate JSON schema
-        working-directory: ./
         run:  yarn && yarn test
