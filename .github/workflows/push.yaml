@@ -8,14 +8,9 @@ jobs:
       contents: 'write'
       id-token: 'write'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - run: |
-          for commit in $(git rev-list ${{ github.base_ref }}..${{ github.head_ref }}); do
-              git checkout $commit
-              echo "run test"
-          done
       - name: Validate JSON schema
         working-directory: ./
         run:  pwd && yarn && yarn test
