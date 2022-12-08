@@ -5,7 +5,7 @@
     "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     "name": "Wrapped Bitcoin",
     "symbol": "WBTC",
-    "baseDenom": "uWBTC",
+    "baseDenom": "wbtc-satoshi",
     "decimals": 8,
     "website": "https://wbtc.network/",
     "explorer": "https://etherscan.io/token/0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
