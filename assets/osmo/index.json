@@ -5,6 +5,7 @@
     "name": "Osmosis",
     "symbol": "Osmo",
     "baseDenom": "uosmo",
+    "cosmosHubId": "osmosis",
     "decimals": 6,
     "website": "https://osmosis.zone/",
     "explorer": "https://www.mintscan.io/osmosis",

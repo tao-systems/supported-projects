@@ -5,6 +5,7 @@
   "name": "Juno",
   "symbol": "JUNO",
   "decimals": 6,
+  "cosmosHubId": "juno",
   "baseDenom": "ujuno",
   "website": "https://www.junonetwork.io/",
   "explorer": "https://www.mintscan.io/juno",

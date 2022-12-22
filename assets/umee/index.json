@@ -5,6 +5,7 @@
   "name": "Umee",
   "symbol": "UMEE",
   "baseDenom": "uumee",
+  "cosmosHubId": "umee",
   "decimals": 6,
   "website": "https://umee.cc/",
   "explorer": "https://www.mintscan.io/umee",
