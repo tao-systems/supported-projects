@@ -3,6 +3,7 @@
   "chainId": "cosmoshub-4",
   "address": "",
   "name": "Cosmos",
+  "cosmosHubId": "cosmoshub",
   "symbol": "ATOM",
   "baseDenom": "uatom",
   "decimals": 6,
