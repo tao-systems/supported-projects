@@ -38,7 +38,7 @@ const ASSET_SCHEMA = {
     'chainId',
     "baseDenom",
     'logo'],
-  additionalProperties: false
+  additionalProperties: true
 }
 
 const validationModel = ajv.compile(ASSET_SCHEMA)
