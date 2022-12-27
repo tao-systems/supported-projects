@@ -46,13 +46,13 @@ async function storeAssets(assets) {
       const snapshot = await firestore.collection('assets').get()
       console.log(`SNAPSHOT`, snapshot)
       if (snapshot.exists) {
-        const updateSymbolList = assets.map(asset => asset.symbol)
+        const updateSymbolList = assets.map(asset => asset.symbol.toUpperCase());
 
         const docData = snapshot.docs.map(doc => doc.data());
 
         const deleteAssetList = docData.reduce((acc, doc) => {
-          if (!updateSymbolList.includes(doc.symbol)) {
-            acc.push(doc.symbol)
+          if (!updateSymbolList.includes(doc.symbol.toUpperCase())) {
+            acc.push(doc.symbol.toUpperCase())
           }
           return acc
         }, [])
@@ -66,7 +66,7 @@ async function storeAssets(assets) {
 
 
       await Promise.all(assets.map(async asset => {
-        const key = asset.symbol;
+        const key = asset.symbol.toUpperCase();
         firestore.collection('assets')
           .doc(key)
           .set(asset)
@@ -89,13 +89,13 @@ async function storeProjects(projects) {
     firestore.runTransaction(async t => {
       const snapshot = await firestore.collection('projects').get()
       if (snapshot.exists) {
-        const updateSymbolList = projects.map(project => project.name)
+        const updateSymbolList = projects.map(project => project.name.toUpperCase())
 
         const docData = snapshot.docs.map(doc => doc.data());
 
         const deleteAssetList = docData.reduce((acc, doc) => {
-          if (!updateSymbolList.includes(doc.name)) {
-            acc.push(doc.name)
+          if (!updateSymbolList.includes(doc.name.toUpperCase())) {
+            acc.push(doc.name.toUpperCase())
           }
           return acc
         }, [])
@@ -109,7 +109,7 @@ async function storeProjects(projects) {
       }))
 
       await Promise.all(assets.map(async asset => {
-        const key = asset.name;
+        const key = asset.name.toUpperCase();
         firestore.collection('projects')
           .doc(key)
           .set(asset)
